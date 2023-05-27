@@ -18,7 +18,7 @@ public class Recv {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            String output = message.equals("1") ? "ON" : "OFF";
+            String output = message.equals("{\"status\":true}") ? "ON" : "OFF";
             System.out.println("LED26: '" + output + "'");
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
@@ -37,7 +37,7 @@ public class Recv {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            String output = message.equals("1") ? "ON" : "OFF";
+            String output = message.equals("{\"status\":true}") ? "ON" : "OFF";
             System.out.println("LED27: '" + output + "'");
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
